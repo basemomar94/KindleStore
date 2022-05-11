@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.bassem.kindlestore.R
 import com.bassem.kindlestore.adapters.BooksAdapter
 import com.bassem.kindlestore.databinding.FragmentHomeBinding
@@ -43,9 +44,13 @@ class HomeFragment : Fragment(R.layout.fragment_home), BooksAdapter.expandInterf
     }
 
 
-    private fun recycleSetup(context: Context, list: MutableList<Book>) {
+    private fun recycleSetup(
+        recyclerView: RecyclerView,
+        context: Context,
+        list: MutableList<Book>
+    ) {
         booksAdapter = BooksAdapter(list, context, this)
-        binding?.recycle?.apply {
+        recyclerView.apply {
             adapter = booksAdapter
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
             setHasFixedSize(true)
@@ -71,8 +76,11 @@ class HomeFragment : Fragment(R.layout.fragment_home), BooksAdapter.expandInterf
     private fun gettingData() {
         viewModel?.fetchBooks()
         viewModel?.booksLiveData?.observe(viewLifecycleOwner) {
-            if (it != null){
-                recycleSetup(requireContext(), it)
+            if (it != null) {
+                recycleSetup(binding?.recycle!!, requireContext(), it)
+                recycleSetup(binding?.recycleNovels!!, requireContext(), it)
+                recycleSetup(binding?.recyleBooks!!, requireContext(), it)
+
                 endLoading()
             }
         }

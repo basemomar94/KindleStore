@@ -15,7 +15,7 @@
         android:layout_gravity="center"
         app:lottie_autoPlay="true"
         app:lottie_loop="true"
-        app:lottie_rawRes="@raw/loadingbook" />
+        app:lottie_rawRes="@raw/loadingb" />
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -57,6 +57,7 @@
                     android:orientation="vertical">
 
                     <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyleBooks"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent" />
                 </LinearLayout>
@@ -74,6 +75,7 @@
                     android:orientation="vertical">
 
                     <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recycleNovels"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent" />
                 </LinearLayout>

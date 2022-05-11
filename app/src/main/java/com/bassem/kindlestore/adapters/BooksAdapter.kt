@@ -49,12 +49,9 @@ class BooksAdapter(
         val item = itemsList[position]
         val itemPostien = position
         holder.title.text = item.title
-
-
-
-
         val url = item.photo
-        Glide.with(context).load(url).into(holder.image)
+        Glide.with(context).load(url).placeholder(R.drawable.bookplaceholder).into(holder.image)
+
 
     }
 

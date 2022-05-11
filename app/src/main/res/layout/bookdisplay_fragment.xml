@@ -1,66 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/soldExpand"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:layoutDirection="rtl"
 
-    >
+    android:overScrollMode="never"
+    android:scrollbarAlwaysDrawHorizontalTrack="false"
+    android:scrollbars="none">
 
 
-    <ImageView
-        android:id="@+id/bookImg"
-        android:layout_width="120dp"
-        android:layout_height="180dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/bookdisc"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginBottom="8dp"
-        android:fontFamily="@font/fares"
-        android:text="تحميل"
-        app:layout_constraintBottom_toTopOf="@+id/booktitle"
-        app:layout_constraintStart_toEndOf="@+id/bookImg"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layoutDirection="rtl"
 
-    <TextView
-        android:id="@+id/booktitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/fares"
-        android:text="عداء الطائرة الورقية"
-        android:textSize="16sp"
-        app:layout_constraintStart_toEndOf="@+id/bookImg"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+        >
+
+        <ImageView
+            android:id="@+id/bookImg"
+            android:layout_width="120dp"
+            android:layout_height="180dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/bookdisc"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.875" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="44dp"
+            android:layout_marginBottom="4dp"
+            android:fontFamily="@font/fares"
+            android:text="تحميل"
+            android:textColor="#000000"
+            app:layout_constraintBottom_toTopOf="@+id/booktitle"
+            app:layout_constraintStart_toEndOf="@+id/bookImg"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/bookauthor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/kawkab"
+            android:text="بهاء طاهر"
+            android:textSize="12sp"
+            app:layout_constraintStart_toEndOf="@+id/bookImg"
+            app:layout_constraintTop_toBottomOf="@+id/booktitle" />
+
+        <TextView
+            android:id="@+id/booktitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/fares"
+            android:text="عداء الطائرة الورقية"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@+id/bookImg"
+            app:layout_constraintTop_toBottomOf="@+id/button" />
+
+        <kr.co.prnd.readmore.ReadMoreTextView
+            android:id="@+id/bookdisc"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:fontFamily="@font/wessam"
+            android:minHeight="48dp"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bookImg"
+            app:readMoreMaxLine="4"
+            app:readMoreText="اقرأ المزيد" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="64dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bookdisc">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/similarRv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </androidx.cardview.widget.CardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-
-    <kr.co.prnd.readmore.ReadMoreTextView
-        android:id="@+id/bookdisc"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        app:readMoreMaxLine="4"
-        app:readMoreText="اقرأ المزيد"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:fontFamily="@font/wessam"
-        android:text="عن الرواية: عداء الطائرة الورقية (بالإنجليزية: The Kite Runner) هي أول رواية للروائي الأمريكي من أصل أفغاني خالد حسيني، والتي تحكي قصة أمير، الفتى من حي وزير أكبر خان في كابل وصديقه المقرب حسن، خادم والده الهزاري. تقع أحداث القصة على خلفية أحداث مضطربة من سقوط للنظام الملكي في أفغانستان، مروراً بالتدخل العسكري السوفييتي، فنزوح اللاجئين إلى باكستان والولايات المتحدة ومن ثم صعود نظام طالبان. يصف خالد حسيني الكتاب بأنه قصة عن العلاقة بين الأب والابن، مشدّداً على الجوانب الأسرية في الرواية، وهو عنصر واظب على استخدامه في أعماله اللاحقة. تبرز في الكتاب مشاعر الذنب ومحاولة التكفير عنه مع ظهور مشهد يتعرض فيه حسن للاعتداء وفشل أمير في الدفاع عن صديقه. يركز الكتاب في نصفه الثاني على محاولة أمير التكفير عن ذنبه حيث يحاول إنقاذ نجل صديقه بعد مرور عقدين من الزمان. أصبح الكتاب من أكثر الكتب مبيعاً بعد نشره ونال شعبية في نوادي الكتب. تصدّر الكتاب قائمة النيويورك تايمز للكتب الأكثر مبيعاً لأكثر من عامين، حيث بيع منه أكثر من سبعة ملايين نسخة في الولايات المتحدة. حصل الكتاب على نقد إيجابي بشكل عام. على الرغم من ذلك، أثارت بعض أجزاء الكتاب جدلاً في أفغانستان. أتبع نشر الكتاب صدور فيلم بنفس العنوان عام 2007 وعدة عروض مسرحية ورواية مصورة."
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bookImg" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

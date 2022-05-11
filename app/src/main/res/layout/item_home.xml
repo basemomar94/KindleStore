@@ -19,7 +19,8 @@
                 android:id="@+id/itemImg"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:scaleType="fitXY" />
+                android:scaleType="fitXY"
+                app:srcCompat="@drawable/bookplaceholder" />
 
             <ImageView
                 android:id="@+id/imageView14"
@@ -34,6 +35,7 @@
                 android:layout_gravity="bottom"
                 android:layout_margin="8dp"
                 android:text="sports sneaker"
+                android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textStyle="bold" />
 

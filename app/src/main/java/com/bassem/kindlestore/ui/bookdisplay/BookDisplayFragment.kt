@@ -1,20 +1,32 @@
 package com.bassem.kindlestore.ui.bookdisplay
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.bassem.kindlestore.R
+import com.bassem.kindlestore.adapters.BooksAdapter
 import com.bassem.kindlestore.databinding.BookdisplayFragmentBinding
 import com.bassem.kindlestore.entities.Book
 import com.bumptech.glide.Glide
+import java.lang.Exception
 
-class BookDisplayFragment : Fragment(R.layout.bookdisplay_fragment) {
-    var binding: BookdisplayFragmentBinding? = null
+class BookDisplayFragment : Fragment(R.layout.bookdisplay_fragment), BooksAdapter.expandInterface {
+    private var binding: BookdisplayFragmentBinding? = null
+    private var viewModel: DisplayViewModel? = null
+    var displayedBook: Book? = null
+    private var booksAdapter: BooksAdapter? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        displayedBook = this.arguments?.getSerializable("book") as Book
     }
 
     override fun onCreateView(
@@ -28,7 +40,14 @@ class BookDisplayFragment : Fragment(R.layout.bookdisplay_fragment) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        updateUi(gettingUiData())
+        viewModel = ViewModelProvider(this)[DisplayViewModel::class.java]
+        displayedBook?.let {
+            updateUi(it)
+            downloadBook(it)
+
+        }
+        fetchSimilarBooks()
+
 
     }
 
@@ -38,11 +57,62 @@ class BookDisplayFragment : Fragment(R.layout.bookdisplay_fragment) {
             Glide.with(requireContext()).load(book.photo).into(bookImg)
             booktitle.text = book.title
             bookdisc.text = book.description
+            bookauthor.text = book.author
         }
 
     }
 
-    private fun gettingUiData() = this.arguments?.getSerializable("book") as Book
+
+    private fun downloadBook(book: Book) {
+        binding?.button?.setOnClickListener {
+            makeToast("جاري التحميل")
+            try {
+                viewModel?.downloadBook(requireActivity(), book.link!!, book.title)
+
+            } catch (e: Exception) {
+                makeToast("تعذر التحميل..حاول مرة آخري")
+
+            }
+
+        }
+    }
+
+    private fun recycleSetup(
+        recyclerView: RecyclerView,
+        context: Context,
+        list: MutableList<Book>
+    ) {
+        booksAdapter = BooksAdapter(list, context, this)
+        recyclerView.apply {
+            adapter = booksAdapter
+            layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+            setHasFixedSize(true)
+
+        }
+
+    }
+
+    private fun fetchSimilarBooks() {
+        viewModel?.apply {
+            fetchSimilarBooks()
+            similarLiveData.observe(viewLifecycleOwner) {
+                recycleSetup(binding?.similarRv!!, requireContext(), it)
+
+            }
+        }
+
+    }
+
+    override fun viewItem(book: Book, position: Int) {
+        updateUi(book)
+        fetchSimilarBooks()
+        downloadBook(book)
+    }
+
+    private fun makeToast(text: String) {
+        Toast.makeText(requireContext(), text, Toast.LENGTH_SHORT)
+            .show()
+    }
 
 
 }

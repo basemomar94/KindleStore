@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import com.bassem.kindlestore.entities.Book
 
 class HomeViewModel : ViewModel() {
-    val repo = HomeRepository()
+    private val repo = HomeRepository()
     val booksLiveData = MutableLiveData<MutableList<Book>>()
 
     fun fetchBooks() {
