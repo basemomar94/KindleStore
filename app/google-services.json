@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "156449307657",
+    "project_id": "kindlestore-e5f1a",
+    "storage_bucket": "kindlestore-e5f1a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:156449307657:android:f1e33f873fe3fb2821ccd8",
+        "android_client_info": {
+          "package_name": "com.bassem.kindlestore"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "156449307657-560fvrulm2bfrl07b8l42kidnvpmr4a5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDvZnnfdd7LCpyhim6KCuIycg0cdJn1B-E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "156449307657-560fvrulm2bfrl07b8l42kidnvpmr4a5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

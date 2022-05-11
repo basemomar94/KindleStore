@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="16dp"
+    android:background="@drawable/cardoutline"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.cardview.widget.CardView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:foregroundGravity="bottom"
+                app:cardCornerRadius="15dp">
+
+                <ImageView
+                    android:id="@+id/favoriteImg"
+                    android:layout_width="150dp"
+                    android:layout_height="180dp"
+                    android:scaleType="fitXY" />
+            </androidx.cardview.widget.CardView>
+        </FrameLayout>
+
+        <ImageView
+            android:id="@+id/favoriteRemove"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_gravity="right"
+            android:layout_margin="16dp"
+            android:foregroundGravity="top"
+            app:srcCompat="@drawable/ic_outline_cancel_24" />
+
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/favoriteTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        android:text="Orange Blouse"
+        android:textColor="@color/gray" />
+
+    <TextView
+        android:id="@+id/favoritePrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="4dp"
+        android:text="500 EGP"
+        android:textColor="@color/black" />
+
+    <Button
+        android:id="@+id/addCartFav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:background="@drawable/bttuon"
+        android:text="Move to Cart"
+        android:textAllCaps="false"
+        android:textSize="10sp" />
+
+</LinearLayout>
