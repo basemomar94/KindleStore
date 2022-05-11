@@ -1,6 +1,6 @@
 package com.bassem.kindlestore.entities
 
-data class FavoriteClass(
+data class Favorite(
     val title: String?=null,
     val price: String?=null,
     val photo:String?=null,

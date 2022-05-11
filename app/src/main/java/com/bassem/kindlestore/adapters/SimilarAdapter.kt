@@ -1,7 +1,6 @@
 package com.bassem.kindlestore.adapters
 
 import android.content.Context
-import android.graphics.Color
 import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
@@ -9,15 +8,13 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.RequiresApi
-import androidx.appcompat.content.res.AppCompatResources.getDrawable
-import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.bassem.kindlestore.R
-import com.bassem.kindlestore.entities.BookClass
+import com.bassem.kindlestore.entities.Book
 import com.bumptech.glide.Glide
 
 class SimilarAdapter(
-    var itemsList: MutableList<BookClass>,
+    var itemsList: MutableList<Book>,
     val context: Context,
     val expandListner: expandInterface,
 ) : RecyclerView.Adapter<SimilarAdapter.ViewHolder>() {

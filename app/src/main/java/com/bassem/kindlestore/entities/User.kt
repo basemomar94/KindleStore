@@ -1,6 +1,6 @@
 package com.bassem.kindlestore.entities
 
-data class UserClass(
+data class User(
     val firstname: String = "",
     val lastname: String = "",
     val mail: String = "",

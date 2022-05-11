@@ -5,13 +5,14 @@
       <map>
         <entry key="..\:/KindleStore/app/src/main/res/drawable-v24/addedcart.xml" value="0.134" />
         <entry key="..\:/KindleStore/app/src/main/res/layout/activity_main.xml" value="0.2608695652173913" />
-        <entry key="..\:/KindleStore/app/src/main/res/layout/bookdisplay_fragment.xml" value="0.17831813576494426" />
+        <entry key="..\:/KindleStore/app/src/main/res/layout/bookdisplay_fragment.xml" value="0.4857142857142857" />
         <entry key="..\:/KindleStore/app/src/main/res/layout/favorite_fragment.xml" value="0.36666666666666664" />
         <entry key="..\:/KindleStore/app/src/main/res/layout/favorite_item.xml" value="0.36666666666666664" />
         <entry key="..\:/KindleStore/app/src/main/res/layout/fragment_home.xml" value="0.2608695652173913" />
         <entry key="..\:/KindleStore/app/src/main/res/layout/home_page_container.xml" value="0.1" />
         <entry key="..\:/KindleStore/app/src/main/res/layout/item_home.xml" value="0.2608695652173913" />
         <entry key="..\:/KindleStore/app/src/main/res/layout/item_similar.xml" value="0.17831813576494426" />
+        <entry key="..\:/KindleStore/app/src/main/res/menu/bottom_menue.xml" value="0.17314814814814813" />
         <entry key="..\:/KindleStore/app/src/main/res/menu/top_menue.xml" value="0.18802083333333333" />
       </map>
     </option>

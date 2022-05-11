@@ -9,11 +9,11 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bassem.kindlestore.R
-import com.bassem.kindlestore.entities.FavoriteClass
+import com.bassem.kindlestore.entities.Favorite
 import com.bumptech.glide.Glide
 
 class FavoriteRecycleAdapter(
-    val favoriteList: MutableList<FavoriteClass>,
+    val favoriteList: MutableList<Favorite>,
     val removelistner: removeInterface,
     val context: Context
 ) : RecyclerView.Adapter<FavoriteRecycleAdapter.ViewHolder>() {

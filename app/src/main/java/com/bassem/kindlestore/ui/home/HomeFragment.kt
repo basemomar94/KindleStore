@@ -2,17 +2,17 @@ package com.bassem.kindlestore.ui.home
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bassem.kindlestore.R
 import com.bassem.kindlestore.adapters.BooksAdapter
 import com.bassem.kindlestore.databinding.FragmentHomeBinding
-import com.bassem.kindlestore.entities.BookClass
+import com.bassem.kindlestore.entities.Book
 
 class HomeFragment : Fragment(R.layout.fragment_home), BooksAdapter.expandInterface {
 
@@ -36,19 +36,14 @@ class HomeFragment : Fragment(R.layout.fragment_home), BooksAdapter.expandInterf
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this)[HomeViewModel::class.java]
-        viewModel?.fetchBooks()
 
+        gettingData()
 
-
-        viewModel?.booksLiveData?.observe(viewLifecycleOwner) {
-            recycleSetup(requireContext(), it)
-            Log.d("Debug", it.size.toString())
-        }
 
     }
 
 
-    private fun recycleSetup(context: Context, list: MutableList<BookClass>) {
+    private fun recycleSetup(context: Context, list: MutableList<Book>) {
         booksAdapter = BooksAdapter(list, context, this)
         binding?.recycle?.apply {
             adapter = booksAdapter
@@ -59,8 +54,36 @@ class HomeFragment : Fragment(R.layout.fragment_home), BooksAdapter.expandInterf
 
     }
 
-    override fun viewItem(item: String, category: String, position: Int) {
+    override fun viewItem(book: Book, position: Int) {
+        viewBook(book, position)
 
+    }
+
+    private fun viewBook(book: Book, position: Int) {
+        booksAdapter?.notifyItemChanged(position)
+        val bundle = Bundle()
+        bundle.putSerializable("book", book)
+        val navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment)
+        navController.navigate(R.id.action_homeFragment_to_bookDisplayFragment, bundle)
+
+    }
+
+    private fun gettingData() {
+        viewModel?.fetchBooks()
+        viewModel?.booksLiveData?.observe(viewLifecycleOwner) {
+            if (it != null){
+                recycleSetup(requireContext(), it)
+                endLoading()
+            }
+        }
+    }
+
+    private fun endLoading() {
+        binding?.apply {
+            loading.visibility = View.GONE
+            recycleLayout.visibility = View.VISIBLE
+
+        }
     }
 
 

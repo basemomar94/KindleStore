@@ -1,177 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/soldExpand"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-   >
+    android:layoutDirection="rtl"
 
-    <FrameLayout
-        android:id="@+id/progressBar5"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    >
 
-        <ProgressBar
-            style="?android:attr/progressBarStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:indeterminateTint="@color/greenPrimary" />
-    </FrameLayout>
 
-    <androidx.core.widget.NestedScrollView
-        android:id="@+id/expandLayout"
-        android:layout_width="match_parent"
+    <ImageView
+        android:id="@+id/bookImg"
+        android:layout_width="120dp"
+        android:layout_height="180dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/bookdisc"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="50dp"
-        android:fillViewport="true"
-        android:visibility="gone">
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="@font/fares"
+        android:text="تحميل"
+        app:layout_constraintBottom_toTopOf="@+id/booktitle"
+        app:layout_constraintStart_toEndOf="@+id/bookImg"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <ImageView
-                android:id="@+id/itemView"
-                android:layout_width="match_parent"
-                android:layout_height="394dp"
-                android:scaleType="fitXY" />
-
-            <TextView
-                android:id="@+id/itemTitleview"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                android:text="Blouse new brand"
-                android:textColor="@color/greenPrimary"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/itemPriceview"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                android:text="500 EGP"
-                android:textColor="@color/black"
-                android:textSize="16sp" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginTop="8dp"
-                    android:text="Author"
-                    android:textColor="@color/greenPrimary"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/textView18"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginTop="8dp"
-                    android:text="Author"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <ImageView
-                android:id="@+id/soldView"
-                android:layout_width="400dp"
-                android:layout_height="350dp"
-                android:layout_gravity="center|top"
-                android:visibility="gone" />
-
-            <TextView
-                android:id="@+id/detailsExpand"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginBottom="8dp"
-                android:text="..........................."
-                android:textColor="@color/gray"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/textView7"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:text="Similar books"
-                android:textColor="@color/green" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/similarRv"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical" />
-
-        </LinearLayout>
-    </androidx.core.widget.NestedScrollView>
-
-    <LinearLayout
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/booktitle"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="false"
-        android:layout_alignParentBottom="true"
-        android:orientation="horizontal">
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/fares"
+        android:text="عداء الطائرة الورقية"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/bookImg"
+        app:layout_constraintTop_toBottomOf="@+id/button" />
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/favExpandcard"
-            android:layout_width="48dp"
-            android:layout_height="52dp"
-            android:layout_gravity="center"
-            android:background="@color/white"
-            app:cardBackgroundColor="@color/white">
 
-            <ImageView
-                android:id="@+id/favImg"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:layout_gravity="center"
-                android:layout_margin="8dp"
-                app:srcCompat="@drawable/ic_baseline_favorite_border_24" />
-        </androidx.cardview.widget.CardView>
 
-        <Button
-            android:id="@+id/cartExpand"
-            android:layout_width="match_parent"
-            android:layout_height="52dp"
-            android:background="@drawable/expan"
-            android:text="Add to cart 🛒"
-            android:textAllCaps="false"
-            android:textSize="16sp" />
-
-        <Button
-            android:id="@+id/checkCart"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:layout_weight="1"
-            android:background="@drawable/bttuon"
-            android:text="Check your cart 🛒"
-            android:textAllCaps="false"
-            android:textSize="16sp"
-            android:visibility="gone" />
-
-    </LinearLayout>
-
-</RelativeLayout>
+    <kr.co.prnd.readmore.ReadMoreTextView
+        android:id="@+id/bookdisc"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        app:readMoreMaxLine="4"
+        app:readMoreText="اقرأ المزيد"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="@font/wessam"
+        android:text="عن الرواية: عداء الطائرة الورقية (بالإنجليزية: The Kite Runner) هي أول رواية للروائي الأمريكي من أصل أفغاني خالد حسيني، والتي تحكي قصة أمير، الفتى من حي وزير أكبر خان في كابل وصديقه المقرب حسن، خادم والده الهزاري. تقع أحداث القصة على خلفية أحداث مضطربة من سقوط للنظام الملكي في أفغانستان، مروراً بالتدخل العسكري السوفييتي، فنزوح اللاجئين إلى باكستان والولايات المتحدة ومن ثم صعود نظام طالبان. يصف خالد حسيني الكتاب بأنه قصة عن العلاقة بين الأب والابن، مشدّداً على الجوانب الأسرية في الرواية، وهو عنصر واظب على استخدامه في أعماله اللاحقة. تبرز في الكتاب مشاعر الذنب ومحاولة التكفير عنه مع ظهور مشهد يتعرض فيه حسن للاعتداء وفشل أمير في الدفاع عن صديقه. يركز الكتاب في نصفه الثاني على محاولة أمير التكفير عن ذنبه حيث يحاول إنقاذ نجل صديقه بعد مرور عقدين من الزمان. أصبح الكتاب من أكثر الكتب مبيعاً بعد نشره ونال شعبية في نوادي الكتب. تصدّر الكتاب قائمة النيويورك تايمز للكتب الأكثر مبيعاً لأكثر من عامين، حيث بيع منه أكثر من سبعة ملايين نسخة في الولايات المتحدة. حصل الكتاب على نقد إيجابي بشكل عام. على الرغم من ذلك، أثارت بعض أجزاء الكتاب جدلاً في أفغانستان. أتبع نشر الكتاب صدور فيلم بنفس العنوان عام 2007 وعدة عروض مسرحية ورواية مصورة."
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bookImg" />
+</androidx.constraintlayout.widget.ConstraintLayout>
