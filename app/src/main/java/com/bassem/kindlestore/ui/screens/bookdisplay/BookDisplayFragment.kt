@@ -1,4 +1,4 @@
-package com.bassem.kindlestore.ui.bookdisplay
+package com.bassem.kindlestore.ui.screens.bookdisplay
 
 import android.content.Context
 import android.os.Bundle
@@ -11,17 +11,17 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bassem.kindlestore.R
-import com.bassem.kindlestore.adapters.BooksAdapter
+import com.bassem.kindlestore.adapters.SimilarAdapter
 import com.bassem.kindlestore.databinding.BookdisplayFragmentBinding
 import com.bassem.kindlestore.entities.Book
 import com.bumptech.glide.Glide
 import java.lang.Exception
 
-class BookDisplayFragment : Fragment(R.layout.bookdisplay_fragment), BooksAdapter.expandInterface {
+class BookDisplayFragment : Fragment(R.layout.bookdisplay_fragment), SimilarAdapter.expandInterface {
     private var binding: BookdisplayFragmentBinding? = null
     private var viewModel: DisplayViewModel? = null
     var displayedBook: Book? = null
-    private var booksAdapter: BooksAdapter? = null
+    private var booksAdapter: SimilarAdapter? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -82,7 +82,7 @@ class BookDisplayFragment : Fragment(R.layout.bookdisplay_fragment), BooksAdapte
         context: Context,
         list: MutableList<Book>
     ) {
-        booksAdapter = BooksAdapter(list, context, this)
+        booksAdapter = SimilarAdapter(list, context, this)
         recyclerView.apply {
             adapter = booksAdapter
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
@@ -103,15 +103,17 @@ class BookDisplayFragment : Fragment(R.layout.bookdisplay_fragment), BooksAdapte
 
     }
 
-    override fun viewItem(book: Book, position: Int) {
-        updateUi(book)
-        fetchSimilarBooks()
-        downloadBook(book)
-    }
+
 
     private fun makeToast(text: String) {
         Toast.makeText(requireContext(), text, Toast.LENGTH_SHORT)
             .show()
+    }
+
+    override fun viewItem(item: Book, category: String) {
+        updateUi(item)
+        fetchSimilarBooks()
+        downloadBook(item)
     }
 
 

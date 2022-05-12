@@ -5,7 +5,7 @@
     app:startDestination="@id/homeFragment">
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.bassem.kindlestore.ui.home.HomeFragment"
+        android:name="com.bassem.kindlestore.ui.screens.home.HomeFragment"
         android:label="HomeFragment" >
         <action
             android:id="@+id/action_homeFragment_to_bookDisplayFragment"
@@ -13,6 +13,6 @@
     </fragment>
     <fragment
         android:id="@+id/bookDisplayFragment"
-        android:name="com.bassem.kindlestore.ui.bookdisplay.BookDisplayFragment"
+        android:name="com.bassem.kindlestore.ui.screens.bookdisplay.BookDisplayFragment"
         android:label="BookDisplayFragment" />
 </navigation>

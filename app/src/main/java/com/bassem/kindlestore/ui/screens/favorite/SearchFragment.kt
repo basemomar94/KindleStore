@@ -1,4 +1,4 @@
-package com.bassem.kindlestore.ui.favorite
+package com.bassem.kindlestore.ui.screens.favorite
 
 import androidx.fragment.app.Fragment
 import com.bassem.kindlestore.R

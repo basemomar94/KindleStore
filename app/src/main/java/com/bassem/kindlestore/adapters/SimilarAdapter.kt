@@ -22,7 +22,6 @@ class SimilarAdapter(
     inner class ViewHolder(itemview: View) : RecyclerView.ViewHolder(itemview) {
         val image = itemview.findViewById<ImageView>(R.id.similarImg)
         val title = itemview.findViewById<TextView>(R.id.similarTitle)
-        val price = itemview.findViewById<TextView>(R.id.similarPrice)
 
 
 
@@ -31,9 +30,9 @@ class SimilarAdapter(
 
             itemview.setOnClickListener {
                 val position = adapterPosition
-                val item = itemsList[position].id
+                val item = itemsList[position]
                 val category = itemsList[position].category
-                expandListner.viewItem(item!!, category!!)
+                expandListner.viewItem(item, category!!)
             }
 
 
@@ -62,7 +61,7 @@ class SimilarAdapter(
 
 
     interface expandInterface {
-        fun viewItem(item: String, category: String)
+        fun viewItem(item: Book, category: String)
 
 
     }

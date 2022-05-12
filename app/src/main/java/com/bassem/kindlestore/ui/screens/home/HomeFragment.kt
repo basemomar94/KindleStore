@@ -1,4 +1,4 @@
-package com.bassem.kindlestore.ui.home
+package com.bassem.kindlestore.ui.screens.home
 
 import android.content.Context
 import android.os.Bundle
@@ -77,9 +77,12 @@ class HomeFragment : Fragment(R.layout.fragment_home), BooksAdapter.expandInterf
         viewModel?.fetchBooks()
         viewModel?.booksLiveData?.observe(viewLifecycleOwner) {
             if (it != null) {
-                recycleSetup(binding?.recycle!!, requireContext(), it)
-                recycleSetup(binding?.recycleNovels!!, requireContext(), it)
-                recycleSetup(binding?.recyleBooks!!, requireContext(), it)
+                recycleSetup(binding?.recycleNovel!!, requireContext(), it)
+                recycleSetup(binding?.recycleEconomics!!, requireContext(), it)
+                recycleSetup(binding?.recyclePhilosophy!!, requireContext(), it)
+                recycleSetup(binding?.recyleHistory!!, requireContext(), it)
+                recycleSetup(binding?.recyclePlotics!!, requireContext(), it)
+                recycleSetup(binding?.recycleTrend!!, requireContext(), it)
 
                 endLoading()
             }

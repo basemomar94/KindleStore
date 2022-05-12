@@ -1,4 +1,4 @@
-package com.bassem.kindlestore.ui.bookdisplay
+package com.bassem.kindlestore.ui.repo
 
 import android.app.Activity
 import android.app.DownloadManager
