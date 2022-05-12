@@ -39,6 +39,7 @@ class HomeFragment : Fragment(R.layout.fragment_home), BooksAdapter.expandInterf
         viewModel = ViewModelProvider(this)[HomeViewModel::class.java]
 
         gettingData()
+        topCardsOnclick()
 
 
     }
@@ -95,6 +96,30 @@ class HomeFragment : Fragment(R.layout.fragment_home), BooksAdapter.expandInterf
             recycleLayout.visibility = View.VISIBLE
 
         }
+    }
+
+
+    private fun gotoCategory(view: View, category: String) {
+        view.setOnClickListener {
+            val bundle = Bundle()
+            bundle.putString("category", category)
+            val navController =
+                Navigation.findNavController(requireActivity(), R.id.nav_host_fragment)
+            navController.navigate(R.id.action_homeFragment_to_categoryFragment, bundle)
+        }
+    }
+
+
+    private fun topCardsOnclick() {
+        gotoCategory(binding?.philosophyCard!!, "philosophy")
+        gotoCategory(binding?.bioCard!!, "bio")
+        gotoCategory(binding?.historyCard!!, "history")
+        gotoCategory(binding?.politicsCard!!, "politics")
+        gotoCategory(binding?.novelCard!!, "novel")
+        gotoCategory(binding?.bioCard!!, "bio")
+        gotoCategory(binding?.economicCard!!, "economics")
+
+
     }
 
 

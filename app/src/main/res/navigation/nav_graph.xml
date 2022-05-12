@@ -10,9 +10,26 @@
         <action
             android:id="@+id/action_homeFragment_to_bookDisplayFragment"
             app:destination="@id/bookDisplayFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_categoryFragment"
+            app:destination="@id/categoryFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_bookDisplayFragment2"
+            app:destination="@id/bookDisplayFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_bookDisplayFragment3"
+            app:destination="@id/bookDisplayFragment" />
     </fragment>
     <fragment
         android:id="@+id/bookDisplayFragment"
         android:name="com.bassem.kindlestore.ui.screens.bookdisplay.BookDisplayFragment"
-        android:label="BookDisplayFragment" />
+        android:label="BookDisplayFragment" >
+        <action
+            android:id="@+id/action_bookDisplayFragment_to_categoryFragment"
+            app:destination="@id/categoryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/categoryFragment"
+        android:name="com.bassem.kindlestore.ui.screens.category.CategoryFragment"
+        android:label="CategoryFragment" />
 </navigation>

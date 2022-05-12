@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-
-
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.screens.home.HomeFragment"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layoutDirection="rtl"
+
+    >
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbar"
@@ -42,6 +45,7 @@
                     android:orientation="horizontal">
 
                     <androidx.cardview.widget.CardView
+                        android:id="@+id/bioCard"
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:layout_margin="8dp"
@@ -56,6 +60,7 @@
                     </androidx.cardview.widget.CardView>
 
                     <androidx.cardview.widget.CardView
+                        android:id="@+id/economicCard"
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:layout_margin="8dp"
@@ -70,6 +75,7 @@
                     </androidx.cardview.widget.CardView>
 
                     <androidx.cardview.widget.CardView
+                        android:id="@+id/novelCard"
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:layout_margin="8dp"
@@ -84,20 +90,7 @@
                     </androidx.cardview.widget.CardView>
 
                     <androidx.cardview.widget.CardView
-                        android:layout_width="70dp"
-                        android:layout_height="70dp"
-                        android:layout_margin="8dp"
-                        app:cardCornerRadius="50dp">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:fontFamily="@font/fares"
-                            android:text="روايات" />
-                    </androidx.cardview.widget.CardView>
-
-                    <androidx.cardview.widget.CardView
+                        android:id="@+id/historyCard"
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:layout_margin="8dp"
@@ -112,6 +105,7 @@
                     </androidx.cardview.widget.CardView>
 
                     <androidx.cardview.widget.CardView
+                        android:id="@+id/philosophyCard"
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:layout_margin="8dp"
@@ -126,6 +120,7 @@
                     </androidx.cardview.widget.CardView>
 
                     <androidx.cardview.widget.CardView
+                        android:id="@+id/politicsCard"
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:layout_margin="8dp"
@@ -140,6 +135,7 @@
                     </androidx.cardview.widget.CardView>
 
                     <androidx.cardview.widget.CardView
+                        android:id="@+id/religionsCard"
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:layout_margin="8dp"
@@ -195,32 +191,33 @@
                     android:orientation="vertical"
                     android:visibility="gone">
 
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="4dp"
+                        android:fontFamily="@font/fares"
+                        android:text="جديد" />
+
                     <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginTop="8dp"
                         android:layout_marginBottom="8dp">
 
-                        <LinearLayout
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recycleTrend"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:orientation="vertical">
+                            android:layout_height="match_parent" />
 
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_margin="8dp"
-                                android:fontFamily="@font/fares"
-                                android:text="جديد" />
-
-                            <androidx.recyclerview.widget.RecyclerView
-                                android:id="@+id/recycleTrend"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent" />
-
-                        </LinearLayout>
                     </androidx.cardview.widget.CardView>
 
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:fontFamily="@font/fares"
+                        android:text="روايات" />
+
                     <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -231,13 +228,6 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:orientation="vertical">
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_margin="8dp"
-                                android:fontFamily="@font/fares"
-                                android:text="روايات" />
 
                             <androidx.recyclerview.widget.RecyclerView
                                 android:id="@+id/recycleNovel"
@@ -248,13 +238,21 @@
                                 android:id="@+id/textView9"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_margin="8dp"
+                                android:layout_margin="4dp"
                                 android:fontFamily="@font/fares"
                                 android:text="مشاهدة المزيد..."
                                 android:textAlignment="textEnd" />
 
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
+
+                    <TextView
+                        android:id="@+id/textView4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:fontFamily="@font/fares"
+                        android:text="تاريخ" />
 
                     <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
@@ -266,14 +264,6 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:orientation="vertical">
-
-                            <TextView
-                                android:id="@+id/textView4"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_margin="8dp"
-                                android:fontFamily="@font/fares"
-                                android:text="تاريخ" />
 
                             <androidx.recyclerview.widget.RecyclerView
                                 android:id="@+id/recyleHistory"
@@ -292,6 +282,14 @@
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
 
+                    <TextView
+                        android:id="@+id/textView5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="4dp"
+                        android:fontFamily="@font/fares"
+                        android:text="فلسفة" />
+
                     <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -302,14 +300,6 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:orientation="vertical">
-
-                            <TextView
-                                android:id="@+id/textView5"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_margin="8dp"
-                                android:fontFamily="@font/fares"
-                                android:text="فلسفة" />
 
                             <androidx.recyclerview.widget.RecyclerView
                                 android:id="@+id/recyclePhilosophy"
@@ -328,6 +318,14 @@
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
 
+                    <TextView
+                        android:id="@+id/textView6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="4dp"
+                        android:fontFamily="@font/fares"
+                        android:text="سياسة" />
+
                     <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -338,14 +336,6 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:orientation="vertical">
-
-                            <TextView
-                                android:id="@+id/textView6"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_margin="8dp"
-                                android:fontFamily="@font/fares"
-                                android:text="سياسة" />
 
                             <androidx.recyclerview.widget.RecyclerView
                                 android:id="@+id/recyclePlotics"
@@ -364,6 +354,14 @@
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
 
+                    <TextView
+                        android:id="@+id/textView7"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="4dp"
+                        android:fontFamily="@font/fares"
+                        android:text="اقتصاد" />
+
                     <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -374,14 +372,6 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:orientation="vertical">
-
-                            <TextView
-                                android:id="@+id/textView7"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_margin="8dp"
-                                android:fontFamily="@font/fares"
-                                android:text="اقتصاد" />
 
                             <androidx.recyclerview.widget.RecyclerView
                                 android:id="@+id/recycleEconomics"
