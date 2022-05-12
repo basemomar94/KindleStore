@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bassem.kindlestore.R
@@ -17,7 +18,8 @@ import com.bassem.kindlestore.entities.Book
 import com.bumptech.glide.Glide
 import java.lang.Exception
 
-class BookDisplayFragment : Fragment(R.layout.bookdisplay_fragment), SimilarAdapter.expandInterface {
+class BookDisplayFragment : Fragment(R.layout.bookdisplay_fragment),
+    SimilarAdapter.expandInterface {
     private var binding: BookdisplayFragmentBinding? = null
     private var viewModel: DisplayViewModel? = null
     var displayedBook: Book? = null
@@ -44,6 +46,7 @@ class BookDisplayFragment : Fragment(R.layout.bookdisplay_fragment), SimilarAdap
         displayedBook?.let {
             updateUi(it)
             downloadBook(it)
+            seeMore(it.category)
 
         }
         fetchSimilarBooks()
@@ -104,7 +107,6 @@ class BookDisplayFragment : Fragment(R.layout.bookdisplay_fragment), SimilarAdap
     }
 
 
-
     private fun makeToast(text: String) {
         Toast.makeText(requireContext(), text, Toast.LENGTH_SHORT)
             .show()
@@ -114,6 +116,16 @@ class BookDisplayFragment : Fragment(R.layout.bookdisplay_fragment), SimilarAdap
         updateUi(item)
         fetchSimilarBooks()
         downloadBook(item)
+    }
+
+    private fun seeMore(category: String) {
+        binding?.moreDisplay?.setOnClickListener {
+            val bundle = Bundle()
+            bundle.putString("category", category)
+            val navController =
+                Navigation.findNavController(requireActivity(), R.id.nav_host_fragment)
+            navController.navigate(R.id.action_bookDisplayFragment_to_categoryFragment, bundle)
+        }
     }
 
 

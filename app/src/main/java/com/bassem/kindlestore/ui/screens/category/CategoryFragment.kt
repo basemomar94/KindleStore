@@ -8,22 +8,21 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bassem.kindlestore.R
 import com.bassem.kindlestore.adapters.BooksAdapter
 import com.bassem.kindlestore.databinding.FragmentCategoryBinding
-import com.bassem.kindlestore.databinding.FragmentHomeBinding
 import com.bassem.kindlestore.entities.Book
-import com.bassem.kindlestore.ui.screens.home.HomeViewModel
 
 class CategoryFragment : Fragment(R.layout.fragment_category), BooksAdapter.expandInterface {
     var binding: FragmentCategoryBinding? = null
     private var viewModel: CategoryViewModel? = null
     private var booksAdapter: BooksAdapter? = null
+    var category: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        category = this.arguments?.getString("category").toString()
     }
 
     override fun onCreateView(
@@ -39,6 +38,7 @@ class CategoryFragment : Fragment(R.layout.fragment_category), BooksAdapter.expa
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this)[CategoryViewModel::class.java]
         gettingBooks()
+        updateUi(category)
 
     }
 
@@ -63,12 +63,28 @@ class CategoryFragment : Fragment(R.layout.fragment_category), BooksAdapter.expa
     }
 
 
-    private fun gettingBooks(){
+    private fun gettingBooks() {
         viewModel?.fetechBooks()
-        viewModel?.booksLiveData?.observe(viewLifecycleOwner){
-            recycleSetup(binding?.categoryRv!!,requireContext(),it)
+        viewModel?.booksLiveData?.observe(viewLifecycleOwner) {
+            recycleSetup(binding?.categoryRv!!, requireContext(), it)
 
         }
+    }
+
+
+    private fun updateUi(category: String) {
+        var categoryAr: String = ""
+        when (category) {
+            "bio" -> categoryAr = "سيرة ذاتية"
+            "economics" -> categoryAr = "إقتصاد"
+            "novel" -> categoryAr = "روايات"
+            "history" -> categoryAr = "تاريخ"
+            "philosophy" -> categoryAr = "فلسفة"
+            "politics" -> categoryAr = "سياسي"
+        }
+        binding?.categoryTitle?.text = categoryAr
+
+
     }
 
 

@@ -39,7 +39,7 @@ class HomeFragment : Fragment(R.layout.fragment_home), BooksAdapter.expandInterf
         viewModel = ViewModelProvider(this)[HomeViewModel::class.java]
 
         gettingData()
-        topCardsOnclick()
+        topCardsSeemoreOnclick()
 
 
     }
@@ -110,14 +110,19 @@ class HomeFragment : Fragment(R.layout.fragment_home), BooksAdapter.expandInterf
     }
 
 
-    private fun topCardsOnclick() {
+    private fun topCardsSeemoreOnclick() {
         gotoCategory(binding?.philosophyCard!!, "philosophy")
+        gotoCategory(binding?.morePhilosophy!!, "philosophy")
         gotoCategory(binding?.bioCard!!, "bio")
         gotoCategory(binding?.historyCard!!, "history")
+        gotoCategory(binding?.moreHistory!!, "history")
         gotoCategory(binding?.politicsCard!!, "politics")
+        gotoCategory(binding?.morePolitics!!, "politics")
         gotoCategory(binding?.novelCard!!, "novel")
-        gotoCategory(binding?.bioCard!!, "bio")
+        gotoCategory(binding?.moreNovels!!, "novel")
         gotoCategory(binding?.economicCard!!, "economics")
+        gotoCategory(binding?.moreEconomics!!, "economics")
+
 
 
     }
