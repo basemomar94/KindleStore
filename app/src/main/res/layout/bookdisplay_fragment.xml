@@ -30,7 +30,8 @@
             app:layout_constraintBottom_toTopOf="@+id/bookdisc"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.875" />
+            app:layout_constraintVertical_bias="0.875"
+            app:srcCompat="@drawable/bookplaceholder" />
 
         <Button
             android:id="@+id/button"
@@ -77,6 +78,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
+            android:ellipsize="end"
             android:fontFamily="@font/wessam"
             android:minHeight="48dp"
             android:textSize="16sp"
@@ -86,7 +88,24 @@
             app:readMoreMaxLine="4"
             app:readMoreText="اقرأ المزيد" />
 
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="@font/fares"
+            android:text="كتب متشابهه قد تعجبك"
+            app:layout_constraintBottom_toTopOf="@+id/cardView2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bookdisc" />
+
         <androidx.cardview.widget.CardView
+            android:id="@+id/cardView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -101,14 +120,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/textView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    android:fontFamily="@font/fares"
-                    android:text="كتب متشابهه قد تعجبك" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/similarRv"

@@ -31,5 +31,9 @@
     <fragment
         android:id="@+id/categoryFragment"
         android:name="com.bassem.kindlestore.ui.screens.category.CategoryFragment"
-        android:label="CategoryFragment" />
+        android:label="CategoryFragment" >
+        <action
+            android:id="@+id/action_categoryFragment_to_bookDisplayFragment"
+            app:destination="@id/bookDisplayFragment" />
+    </fragment>
 </navigation>

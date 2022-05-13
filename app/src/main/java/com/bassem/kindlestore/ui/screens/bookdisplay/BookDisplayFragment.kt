@@ -1,11 +1,15 @@
 package com.bassem.kindlestore.ui.screens.bookdisplay
 
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
@@ -22,7 +26,7 @@ class BookDisplayFragment : Fragment(R.layout.bookdisplay_fragment),
     SimilarAdapter.expandInterface {
     private var binding: BookdisplayFragmentBinding? = null
     private var viewModel: DisplayViewModel? = null
-    var displayedBook: Book? = null
+    private var displayedBook: Book? = null
     private var booksAdapter: SimilarAdapter? = null
 
 
@@ -70,11 +74,12 @@ class BookDisplayFragment : Fragment(R.layout.bookdisplay_fragment),
         binding?.button?.setOnClickListener {
             makeToast("جاري التحميل")
             try {
-                viewModel?.downloadBook(requireActivity(), book.link!!, book.title)
+                viewModel?.downloadBook(requireActivity(), book.link.toString(), book.title)
+                //  downloadFromDrive(book.link!!)
 
             } catch (e: Exception) {
                 makeToast("تعذر التحميل..حاول مرة آخري")
-
+                Log.d("debug", e.message.toString())
             }
 
         }
@@ -126,6 +131,15 @@ class BookDisplayFragment : Fragment(R.layout.bookdisplay_fragment),
                 Navigation.findNavController(requireActivity(), R.id.nav_host_fragment)
             navController.navigate(R.id.action_bookDisplayFragment_to_categoryFragment, bundle)
         }
+    }
+
+    fun downloadFromDrive(DRIVE_URL: String) {
+        val driveIntent = Intent(
+            Intent.ACTION_VIEW,
+            Uri.parse(DRIVE_URL)
+        )//Link can have any data link .apk, .mp4 ..
+        val browserChooserIntent = Intent.createChooser(driveIntent, "Choose browser")
+        startActivity(browserChooserIntent)
     }
 
 

@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bassem.kindlestore.R
@@ -59,7 +60,7 @@ class CategoryFragment : Fragment(R.layout.fragment_category), BooksAdapter.expa
     }
 
     override fun viewItem(book: Book, position: Int) {
-
+        viewBook(book)
     }
 
 
@@ -84,6 +85,14 @@ class CategoryFragment : Fragment(R.layout.fragment_category), BooksAdapter.expa
         }
         binding?.categoryTitle?.text = categoryAr
 
+
+    }
+
+    private fun viewBook(book: Book) {
+        val bundle = Bundle()
+        bundle.putSerializable("book", book)
+        val navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment)
+        navController.navigate(R.id.action_categoryFragment_to_bookDisplayFragment, bundle)
 
     }
 
