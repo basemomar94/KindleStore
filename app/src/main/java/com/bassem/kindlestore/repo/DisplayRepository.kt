@@ -1,4 +1,4 @@
-package com.bassem.kindlestore.ui.repo
+package com.bassem.kindlestore.repo
 
 import android.app.Activity
 import android.app.DownloadManager

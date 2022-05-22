@@ -4,8 +4,8 @@ import android.app.Activity
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.bassem.kindlestore.entities.Book
-import com.bassem.kindlestore.ui.repo.DisplayRepository
-import com.bassem.kindlestore.ui.repo.HomeRepository
+import com.bassem.kindlestore.repo.DisplayRepository
+import com.bassem.kindlestore.repo.HomeRepository
 
 class DisplayViewModel : ViewModel() {
     private val repoDisplay = DisplayRepository()

@@ -1,4 +1,4 @@
-package com.bassem.kindlestore.ui.repo
+package com.bassem.kindlestore.repo
 
 import androidx.lifecycle.MutableLiveData
 import com.bassem.kindlestore.entities.Book
