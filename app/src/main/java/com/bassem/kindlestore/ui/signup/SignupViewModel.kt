@@ -10,10 +10,10 @@ import com.facebook.login.widget.LoginButton
 class SignupViewModel : ViewModel() {
 
     val repo = LoginRepository()
-    val result = MutableLiveData<Boolean>()
+    val successLogin = MutableLiveData<Boolean>()
 
     fun continueWithFacebook(button: LoginButton, context: Context, call: CallbackManager) {
-        repo.continueFacebook(button, context, result, call)
+        repo.continueFacebook(button, context, successLogin, call)
     }
 
 

@@ -1,23 +1,18 @@
 package com.bassem.kindlestore.ui.signup
 
-import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.bassem.kindlestore.R
 import com.bassem.kindlestore.databinding.FragmentSignupBinding
-import com.facebook.AccessToken
 import com.facebook.CallbackManager
-import com.facebook.FacebookCallback
-import com.facebook.FacebookException
-import com.facebook.login.LoginResult
-import com.google.firebase.auth.FacebookAuthProvider
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 
 class SignupFragment : Fragment(R.layout.fragment_signup) {
@@ -44,15 +39,11 @@ class SignupFragment : Fragment(R.layout.fragment_signup) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        // continueFacebook()
         viewModel = ViewModelProvider(this)[SignupViewModel::class.java]
-        viewModel?.continueWithFacebook(
-            binding?.buttonFacebookLogin!!,
-            requireContext(),
-            callbackManager!!
-        )
+        visibilityBottomBar(false)
+        continueWithFacebook()
+        checkSuccessLogin()
     }
-
 
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -60,5 +51,41 @@ class SignupFragment : Fragment(R.layout.fragment_signup) {
 
         // Pass the activity result back to the Facebook SDK
         callbackManager?.onActivityResult(requestCode, resultCode, data)
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        visibilityBottomBar(true)
+    }
+
+    private fun continueWithFacebook() {
+        viewModel?.continueWithFacebook(
+            binding?.buttonFacebookLogin!!,
+            requireContext(),
+            callbackManager!!
+        )
+    }
+
+    private fun checkSuccessLogin() {
+        viewModel?.successLogin?.observe(viewLifecycleOwner) {
+            if (it) {
+                Log.d("Success", it.toString())
+                findNavController().navigate(R.id.action_signupFragment_to_Home)
+            }
+
+        }
+    }
+
+    private fun visibilityBottomBar(isvisible: Boolean) {
+        requireActivity().findViewById<BottomNavigationView>(R.id.bottomAppBar).apply {
+            visibility = if (isvisible) {
+                View.VISIBLE
+
+            } else {
+                View.GONE
+
+            }
+
+        }
     }
 }

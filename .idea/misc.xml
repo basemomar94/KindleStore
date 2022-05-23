@@ -10,9 +10,11 @@
         <entry key="..\:/KindleStore/app/src/main/res/layout/bookdisplay_fragment.xml" value="0.25" />
         <entry key="..\:/KindleStore/app/src/main/res/layout/favorite_fragment.xml" value="0.36666666666666664" />
         <entry key="..\:/KindleStore/app/src/main/res/layout/favorite_item.xml" value="0.36666666666666664" />
+        <entry key="..\:/KindleStore/app/src/main/res/layout/fragment_account.xml" value="0.3009833262077811" />
         <entry key="..\:/KindleStore/app/src/main/res/layout/fragment_category.xml" value="0.25" />
         <entry key="..\:/KindleStore/app/src/main/res/layout/fragment_home.xml" value="0.2608695652173913" />
         <entry key="..\:/KindleStore/app/src/main/res/layout/fragment_signup.xml" value="0.23118766999093382" />
+        <entry key="..\:/KindleStore/app/src/main/res/layout/fragment_splash.xml" value="0.3009833262077811" />
         <entry key="..\:/KindleStore/app/src/main/res/layout/home_page_container.xml" value="0.1" />
         <entry key="..\:/KindleStore/app/src/main/res/layout/item_home.xml" value="0.2608695652173913" />
         <entry key="..\:/KindleStore/app/src/main/res/layout/item_similar.xml" value="0.17831813576494426" />
