@@ -39,21 +39,14 @@ class LoginRepository {
             FacebookCallback<LoginResult> {
             override fun onSuccess(loginResult: LoginResult) {
                 handleFacebookAccessTocken(loginResult.accessToken, context, result)
-                Log.d("FB", "facebook:onSuccess:$loginResult")
-                //  handleFacebookAccessToken(loginResult.accessToken)
             }
 
             override fun onCancel() {
-                Log.d("FB", "facebook:onCancel")
-                // ...
             }
 
             override fun onError(error: FacebookException) {
-                Log.d("FB", "facebook:onError", error)
-                // ...
             }
         })
-        // ...
 
 
     }
@@ -70,7 +63,7 @@ class LoginRepository {
 
         }.addOnSuccessListener {
             result.postValue(true)
-            addUsertoDatabase(getUserData(it.user!!))
+            it.user?.let { it1 -> checkifUserexsit(it1) }
 
         }
     }
@@ -95,4 +88,17 @@ class LoginRepository {
         LoginManager.getInstance().logOut()
 
     }
+
+    fun checkifUserexsit(firebaseuser: FirebaseUser) {
+        db.collection("users").whereEqualTo("mail", firebaseuser.email).get()
+            .addOnCompleteListener {
+                Log.d("mail", it.result.isEmpty.toString())
+
+                if (it.result.isEmpty) {
+                    addUsertoDatabase(getUserData(firebaseuser))
+                }
+            }
+
+    }
+
 }

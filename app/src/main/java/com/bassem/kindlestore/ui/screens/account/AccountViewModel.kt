@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import com.bassem.kindlestore.repo.LoginRepository
 
 class AccountViewModel : ViewModel() {
-    val repo = LoginRepository()
+    private val repo = LoginRepository()
     fun logOut() {
         repo.logOut()
     }
