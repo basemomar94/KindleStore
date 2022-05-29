@@ -9,8 +9,8 @@ class SplashViewModel : ViewModel() {
     var isSign = MutableLiveData<Boolean>()
     val repo = LoginRepository()
     fun isSign() {
-        isSign.postValue(repo.checkSignin())
-        Log.d("Sign", repo.checkSignin().toString())
+        isSign.postValue(repo.checkSigning())
+        Log.d("Sign", repo.checkSigning().toString())
         Log.d("Sign", repo.getUserId().toString())
 
 

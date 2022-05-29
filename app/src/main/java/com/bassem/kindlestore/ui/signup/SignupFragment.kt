@@ -12,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 import com.bassem.kindlestore.R
 import com.bassem.kindlestore.databinding.FragmentSignupBinding
 import com.facebook.CallbackManager
+import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 
@@ -42,15 +43,23 @@ class SignupFragment : Fragment(R.layout.fragment_signup) {
         viewModel = ViewModelProvider(this)[SignupViewModel::class.java]
         visibilityBottomBar(false)
         continueWithFacebook()
+        continueWithGooogle()
         checkSuccessLogin()
     }
 
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
+        Log.d("REQ",requestCode.toString())
 
-        // Pass the activity result back to the Facebook SDK
-        callbackManager?.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == 101) {
+          val account = GoogleSignIn.getSignedInAccountFromIntent(data).result
+            viewModel?.firebaseAuth(account)
+
+        } else {
+            callbackManager?.onActivityResult(requestCode, resultCode, data)
+
+        }
     }
 
     override fun onDetach() {
@@ -76,7 +85,7 @@ class SignupFragment : Fragment(R.layout.fragment_signup) {
         }
     }
 
-    private fun visibilityBottomBar(isvisible: Boolean) {
+    fun visibilityBottomBar(isvisible: Boolean) {
         requireActivity().findViewById<BottomNavigationView>(R.id.bottomAppBar).apply {
             visibility = if (isvisible) {
                 View.VISIBLE
@@ -88,4 +97,13 @@ class SignupFragment : Fragment(R.layout.fragment_signup) {
 
         }
     }
+
+    private fun continueWithGooogle() {
+        binding?.button2?.setOnClickListener {
+            viewModel?.continueGoolge(requireContext(), requireActivity())
+
+        }
+    }
+
+
 }
